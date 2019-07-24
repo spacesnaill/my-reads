@@ -37,7 +37,14 @@ class BookShelves extends Component {
   render() {
     return (
       <div>
+        <h1>Currently Reading</h1>
         <BookList bookShelf={this.state.currentlyReading} />
+        <hr />
+        <h1>Want To Read</h1>
+        <BookList bookShelf={this.state.wantToRead} />
+        <hr />
+        <h1>Read</h1>
+        <BookList bookShelf={this.state.read} />
         <AddBook />
       </div>
     );
