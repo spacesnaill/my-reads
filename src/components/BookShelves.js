@@ -4,14 +4,40 @@ import BookList from "./BookList";
 import AddBook from "./AddBook";
 
 class BookShelves extends Component {
-  componentDidMount() {}
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      currentlyReading: [],
+      wantToRead: [],
+      read: []
+    };
+  }
+
+  filterBooksByShelf(books, shelfName) {
+    return books.filter(book => {
+      console.log(book.shelf);
+      if (book.shelf === shelfName) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+
+  componentDidMount() {
+    BooksApi.getAll().then(books => {
+      console.log(books);
+      this.setState({
+        currentlyReading: this.filterBooksByShelf(books, "currentlyReading")
+      });
+    });
+  }
 
   render() {
     return (
       <div>
-        <BookList />
-        <BookList />
-        <BookList />
+        <BookList bookShelf={this.state.currentlyReading} />
         <AddBook />
       </div>
     );
