@@ -8,7 +8,7 @@ function BookList(props) {
     <ol>
       {props.bookShelf.map(book => {
         return (
-          <li>
+          <li key={book.id}>
             <Book title={book.title} image={book.imageLinks.smallThumbnail} />
             <MoveBook />
           </li>
