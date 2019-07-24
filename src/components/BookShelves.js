@@ -1,9 +1,20 @@
 import React, { Component } from "react";
-import BooksApi from "../BooksApi";
+import * as BooksApi from "../BooksApi";
+import BookList from "./BookList";
+import AddBook from "./AddBook";
 
 class BookShelves extends Component {
+  componentDidMount() {}
+
   render() {
-    return <h1>Hello BookShelves</h1>;
+    return (
+      <div>
+        <BookList />
+        <BookList />
+        <BookList />
+        <AddBook />
+      </div>
+    );
   }
 }
 
