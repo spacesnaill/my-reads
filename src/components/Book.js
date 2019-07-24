@@ -10,7 +10,7 @@ function Book(props) {
   );
 }
 
-Book.prototype = {
+Book.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired
 };
