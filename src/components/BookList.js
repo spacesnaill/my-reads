@@ -9,7 +9,7 @@ function BookList(props) {
       {props.bookShelf.map(book => {
         return (
           <li>
-            <Book />
+            <Book title={book.title} image={book.imageLinks.smallThumbnail} />
             <MoveBook />
           </li>
         );
