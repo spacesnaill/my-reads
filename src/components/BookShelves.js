@@ -16,7 +16,6 @@ class BookShelves extends Component {
 
   filterBooksByShelf(books, shelfName) {
     return books.filter(book => {
-      console.log(book.shelf);
       if (book.shelf === shelfName) {
         return true;
       } else {
@@ -27,7 +26,6 @@ class BookShelves extends Component {
 
   componentDidMount() {
     BooksApi.getAll().then(books => {
-      console.log(books);
       this.setState({
         currentlyReading: this.filterBooksByShelf(books, "currentlyReading"),
         wantToRead: this.filterBooksByShelf(books, "wantToRead"),
