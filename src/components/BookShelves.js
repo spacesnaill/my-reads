@@ -29,7 +29,9 @@ class BookShelves extends Component {
     BooksApi.getAll().then(books => {
       console.log(books);
       this.setState({
-        currentlyReading: this.filterBooksByShelf(books, "currentlyReading")
+        currentlyReading: this.filterBooksByShelf(books, "currentlyReading"),
+        wantToRead: this.filterBooksByShelf(books, "wantToRead"),
+        read: this.filterBooksByShelf(books, "read")
       });
     });
   }
