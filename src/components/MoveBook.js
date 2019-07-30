@@ -1,7 +1,8 @@
 import React from "react";
+import { Button } from "semantic-ui-react";
 
 function MoveBook(props) {
-  return <button>Move Book</button>;
+  return <Button>Move Book</Button>;
 }
 
 export default MoveBook;

@@ -1,11 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
-
+import { Image, Card } from "semantic-ui-react";
 function Book(props) {
   return (
     <div>
-      <img alt="{props.title} Book Cover" src={props.image} />
-      <p>{props.title}</p>
+      <Image
+        centered
+        alt="{props.title} Book Cover"
+        src={props.image}
+        width={100}
+        height={160}
+        className="book-cover"
+      />
+      <Card.Content>
+        <Card.Header as="h3">{props.title}</Card.Header>
+      </Card.Content>
     </div>
   );
 }

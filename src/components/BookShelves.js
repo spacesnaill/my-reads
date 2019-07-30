@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as BooksApi from "../BooksApi";
 import BookList from "./BookList";
 import AddBook from "./AddBook";
+import { Container, Divider, Header } from "semantic-ui-react";
 
 class BookShelves extends Component {
   constructor(props) {
@@ -36,17 +37,44 @@ class BookShelves extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Currently Reading</h1>
-        <BookList bookShelf={this.state.currentlyReading} />
-        <hr />
-        <h1>Want To Read</h1>
-        <BookList bookShelf={this.state.wantToRead} />
-        <hr />
-        <h1>Read</h1>
-        <BookList bookShelf={this.state.read} />
+      <Container textAlign="center" className="mainContainer">
+        <Container
+          textAlign="center"
+          fluid={true}
+          className="bookListContainer"
+        >
+          <Header textAlign="left" as="h2">
+            Want To Read
+          </Header>
+          <BookList bookShelf={this.state.wantToRead} />
+        </Container>
+
+        <Divider />
+
+        <Container
+          textAlign="center"
+          fluid={true}
+          className="bookListContainer"
+        >
+          <Header textAlign="left" as="h2">
+            Currently Reading
+          </Header>
+          <BookList bookShelf={this.state.currentlyReading} />
+        </Container>
+
+        <Divider className="divider" />
+        <Container
+          textAlign="center"
+          fluid={true}
+          className="bookListContainer"
+        >
+          <Header textAlign="left" as="h2">
+            Read
+          </Header>
+          <BookList bookShelf={this.state.read} />
+        </Container>
         <AddBook />
-      </div>
+      </Container>
     );
   }
 }

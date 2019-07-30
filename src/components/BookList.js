@@ -2,19 +2,22 @@ import React from "react";
 import Book from "./Book";
 import MoveBook from "./MoveBook";
 import PropTypes from "prop-types";
+import { Card } from "semantic-ui-react";
 
 function BookList(props) {
   return (
-    <ol>
+    <Card.Group className="bookList">
       {props.bookShelf.map(book => {
         return (
-          <li key={book.id}>
+          <Card key={book.id} color="green" className="book-card">
             <Book title={book.title} image={book.imageLinks.smallThumbnail} />
-            <MoveBook />
-          </li>
+            <Card.Content extra>
+              <MoveBook />
+            </Card.Content>
+          </Card>
         );
       })}
-    </ol>
+    </Card.Group>
   );
 }
 
