@@ -2,7 +2,7 @@ import React from "react";
 import Book from "./Book";
 import MoveBook from "./MoveBook";
 import PropTypes from "prop-types";
-import { Card } from "semantic-ui-react";
+import { Card, Dropdown } from "semantic-ui-react";
 
 function BookList(props) {
   return (
@@ -12,14 +12,13 @@ function BookList(props) {
           <Card key={book.id} color="green" className="book-card">
             <Book title={book.title} image={book.imageLinks.smallThumbnail} />
             <Card.Content extra>
-              <button
-                onClick={event => {
-                  event.preventDefault();
-                  props.moveBookToShelf(book.id, props.shelfName);
-                }}
-              >
-                Move Book
-              </button>
+              <Dropdown text="Move Book to...">
+                <Dropdown.Menu>
+                  <Dropdown.Item>Want To Read</Dropdown.Item>
+                  <Dropdown.Item>Currently Reading</Dropdown.Item>
+                  <Dropdown.Item>Read</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </Card.Content>
           </Card>
         );
@@ -35,3 +34,7 @@ BookList.propTypes = {
 };
 
 export default BookList;
+// onClick={event => {
+//   event.preventDefault();
+//   props.moveBookToShelf(book.id, props.shelfName, "read");
+// }}
