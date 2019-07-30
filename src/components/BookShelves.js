@@ -55,9 +55,10 @@ class BookShelves extends Component {
   addBookToShelf = (bookShelfName, bookId) => {
     BooksApi.get(bookId).then(book => {
       this.setState(currentState => {
-        const newBookShelf = currentState[bookShelfName].push(book);
+        currentState[bookShelfName].push(book);
+        //const newBookShelf = currentState;
         return {
-          [bookShelfName]: newBookShelf
+          [bookShelfName]: currentState[bookShelfName]
         };
       });
     });
