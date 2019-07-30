@@ -12,7 +12,14 @@ function BookList(props) {
           <Card key={book.id} color="green" className="book-card">
             <Book title={book.title} image={book.imageLinks.smallThumbnail} />
             <Card.Content extra>
-              <MoveBook />
+              <button
+                onClick={event => {
+                  event.preventDefault();
+                  props.moveBookToShelf(book.id, props.shelfName);
+                }}
+              >
+                Move Book
+              </button>
             </Card.Content>
           </Card>
         );
@@ -22,7 +29,9 @@ function BookList(props) {
 }
 
 BookList.propTypes = {
-  bookShelf: PropTypes.array.isRequired
+  bookShelf: PropTypes.array.isRequired,
+  shelfName: PropTypes.string.isRequired,
+  moveBookToShelf: PropTypes.func.isRequired
 };
 
 export default BookList;

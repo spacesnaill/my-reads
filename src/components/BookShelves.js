@@ -37,6 +37,37 @@ class BookShelves extends Component {
     });
   }
 
+  deleteBookFromShelf = (bookShelfName, bookId) => {
+    this.setState(currentState => {
+      const newBookShelf = currentState[bookShelfName].filter(book => {
+        if (book.id !== bookId) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+      return {
+        [bookShelfName]: newBookShelf
+      };
+    });
+  };
+
+  addBookToShelf = (bookShelfName, bookId) => {
+    BooksApi.get(bookId).then(book => {
+      this.setState(currentState => {
+        const newBookShelf = currentState[bookShelfName].push(book);
+        return {
+          [bookShelfName]: newBookShelf
+        };
+      });
+    });
+  };
+
+  moveBookToShelf = (bookId, origin, destination) => {
+    this.deleteBookFromShelf(origin, bookId);
+    this.addBookToShelf(destination, bookId);
+  };
+
   render() {
     return (
       <Container width="66%" textAlign="center">
@@ -50,7 +81,11 @@ class BookShelves extends Component {
             <Header textAlign="left" as="h2">
               Want To Read
             </Header>
-            <BookList bookShelf={this.state.wantToRead} />
+            <BookList
+              bookShelf={this.state.wantToRead}
+              moveBookToShelf={this.moveBookToShelf}
+              shelfName="wantToRead"
+            />
           </Segment>
 
           <Segment
@@ -62,7 +97,11 @@ class BookShelves extends Component {
             <Header textAlign="left" as="h2">
               Currently Reading
             </Header>
-            <BookList bookShelf={this.state.currentlyReading} />
+            <BookList
+              bookShelf={this.state.currentlyReading}
+              moveBookToShelf={this.moveBookToShelf}
+              shelfName="currentlyReading"
+            />
           </Segment>
 
           <Segment
@@ -74,7 +113,11 @@ class BookShelves extends Component {
             <Header textAlign="left" as="h2">
               Read
             </Header>
-            <BookList bookShelf={this.state.read} />
+            <BookList
+              bookShelf={this.state.read}
+              moveBookToShelf={this.moveBookToShelf}
+              shelfName="read"
+            />
           </Segment>
           <AddBook />
         </Segment.Group>
