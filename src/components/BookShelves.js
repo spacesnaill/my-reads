@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as BooksApi from "../BooksApi";
 import BookList from "./BookList";
 import AddBook from "./AddBook";
-import { Segment, Container, Divider, Header } from "semantic-ui-react";
+import { Segment, Container, Header, Menu } from "semantic-ui-react";
 
 class BookShelves extends Component {
   constructor(props) {
@@ -72,10 +72,9 @@ class BookShelves extends Component {
   render() {
     return (
       <Container width="66%" textAlign="center">
-        <Segment.Group textAlign="center">
+        <Segment.Group>
           <Segment
             textAlign="center"
-            fluid={true}
             className="bookListContainer"
             loading={this.state.loading}
           >
@@ -91,7 +90,6 @@ class BookShelves extends Component {
 
           <Segment
             textAlign="center"
-            fluid={true}
             className="bookListContainer"
             loading={this.state.loading}
           >
@@ -107,7 +105,6 @@ class BookShelves extends Component {
 
           <Segment
             textAlign="center"
-            fluid={true}
             className="bookListContainer"
             loading={this.state.loading}
           >
