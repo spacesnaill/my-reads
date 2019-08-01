@@ -52,11 +52,16 @@ class BookShelves extends Component {
     });
   };
 
-  addBookToShelf = (bookShelfName, bookId) => {
+  addBookToShelf = (bookShelfName, book) => {
+    BooksApi.update(book, bookShelfName).then(() => {
+      this.updateUIBookShelf(bookShelfName, book.id);
+    });
+  };
+
+  updateUIBookShelf = (bookShelfName, bookId) => {
     BooksApi.get(bookId).then(book => {
       this.setState(currentState => {
         currentState[bookShelfName].push(book);
-        //const newBookShelf = currentState;
         return {
           [bookShelfName]: currentState[bookShelfName]
         };
@@ -64,9 +69,9 @@ class BookShelves extends Component {
     });
   };
 
-  moveBookToShelf = (bookId, origin, destination) => {
-    this.deleteBookFromShelf(origin, bookId);
-    this.addBookToShelf(destination, bookId);
+  moveBookToShelf = (book, origin, destination) => {
+    this.addBookToShelf(destination, book);
+    this.deleteBookFromShelf(origin, book.id);
   };
 
   render() {

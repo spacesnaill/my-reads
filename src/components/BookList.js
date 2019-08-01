@@ -18,7 +18,7 @@ function BookList(props) {
                     disabled={props.shelfName === "wantToRead"}
                     onClick={event => {
                       props.moveBookToShelf(
-                        book.id,
+                        book,
                         props.shelfName,
                         "wantToRead"
                       );
@@ -30,7 +30,7 @@ function BookList(props) {
                     disabled={props.shelfName === "currentlyReading"}
                     onClick={event => {
                       props.moveBookToShelf(
-                        book.id,
+                        book,
                         props.shelfName,
                         "currentlyReading"
                       );
@@ -41,7 +41,7 @@ function BookList(props) {
                   <Dropdown.Item
                     disabled={props.shelfName === "read"}
                     onClick={event => {
-                      props.moveBookToShelf(book.id, props.shelfName, "read");
+                      props.moveBookToShelf(book, props.shelfName, "read");
                     }}
                   >
                     Read
