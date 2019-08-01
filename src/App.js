@@ -7,8 +7,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 function App() {
   return (
     <Router>
-      <Route path="/" component={BookShelves} />
-      <Route path="/BookSearch" component={BookSearch} />
+      <Route exact path="/" component={BookShelves} />
+      <Route exact path="/BookSearch" component={BookSearch} />
     </Router>
   );
 }
