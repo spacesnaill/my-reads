@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Button, Search, Container, Segment, Header } from "semantic-ui-react";
+import { Button, Input, Container, Segment, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import BookList from "./BookList";
 import * as BooksApi from "../BooksApi";
-
+import SearchForBook from "./SearchForBook";
 class BookSearch extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +30,7 @@ class BookSearch extends Component {
           <Header textAlign="left" as="h1">
             Book Search
           </Header>
+          <SearchForBook />
           <BookList bookShelf={this.state.searchResults} shelfName="" />
         </Segment>
         <Link to="/">
