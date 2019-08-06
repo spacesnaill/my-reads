@@ -14,6 +14,9 @@ function MoveBook(props) {
             <Dropdown.Item
               key={bookShelf.name}
               disabled={props.shelfName === bookShelf.name}
+              onClick={event => {
+                moveBookToShelf(props.book, bookShelf.name);
+              }}
             >
               {bookShelf.title}
             </Dropdown.Item>
