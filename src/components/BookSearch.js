@@ -40,12 +40,6 @@ class BookSearch extends Component {
     });
   };
 
-  moveBookToShelf = (book, bookShelfName) => {
-    BooksApi.update(book, bookShelfName).then(() => {
-      this.updateUIBookShelf(bookShelfName, book.id);
-    });
-  };
-
   render() {
     return (
       <Container width="66%" textAlign="center">
@@ -61,11 +55,7 @@ class BookSearch extends Component {
             size="large"
             icon="search"
           />
-          <BookList
-            bookShelf={this.state.searchResults}
-            moveBookToShelf={this.moveBookToShelf}
-            shelfName=""
-          />
+          <BookList bookShelf={this.state.searchResults} shelfName="" />
         </Segment>
         <Link to="/">
           <Button className="back-button">&#8592; Back to Bookshelves</Button>
