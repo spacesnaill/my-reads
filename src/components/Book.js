@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Image, Card } from "semantic-ui-react";
+import { Rating, Image, Card } from "semantic-ui-react";
 function Book(props) {
   return (
     <div>
@@ -14,6 +14,16 @@ function Book(props) {
       />
       <Card.Content>
         <Card.Header as="h3">{props.title}</Card.Header>
+        <Card.Description>
+          Rating:{" "}
+          <Rating
+            defaultRating={props.averageRating}
+            maxRating={5}
+            icon="heart"
+            disabled
+          />
+          ({props.ratingsCount || 0})
+        </Card.Description>
       </Card.Content>
     </div>
   );

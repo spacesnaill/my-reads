@@ -23,6 +23,8 @@ function BookList(props) {
                   ? book.imageLinks.smallThumbnail
                   : "http://via.placeholder.com/100/160"
               }
+              averageRating={book.averageRating}
+              ratingsCount={book.ratingsCount}
             />
             <Card.Content extra>
               <MoveBook
