@@ -31,7 +31,9 @@ function Book(props) {
 
 Book.propTypes = {
   title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired
+  image: PropTypes.string.isRequired,
+  averageRating: PropTypes.number.isRequired,
+  ratingsCount: PropTypes.number.isRequired
 };
 
 export default Book;

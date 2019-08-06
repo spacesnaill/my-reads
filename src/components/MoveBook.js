@@ -1,6 +1,8 @@
 import React from "react";
 import { Dropdown } from "semantic-ui-react";
 import { update } from "../BooksApi";
+import PropTypes from "prop-types";
+
 function MoveBook(props) {
   function moveBookToShelf(book, destinationShelfName, runAfterUpdate) {
     update(book, destinationShelfName).then(result => {
@@ -38,5 +40,12 @@ function MoveBook(props) {
     </Dropdown>
   );
 }
+
+MoveBook.propTypes = {
+  bookShelves: PropTypes.array.isRequired,
+  shelfName: PropTypes.string.isRequired,
+  book: PropTypes.object.isRequired,
+  runAfterBookIsUpdated: PropTypes.func
+};
 
 export default MoveBook;
