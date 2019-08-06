@@ -36,6 +36,8 @@ class BookSearch extends Component {
     this.setState({ searchValue: newValue }, () => {
       if (newValue.length > 1) {
         this.searchBooks(this.state.searchValue);
+      } else {
+        this.setState({ searchResults: [] });
       }
     });
   };
