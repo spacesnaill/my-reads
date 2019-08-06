@@ -3,25 +3,42 @@ import { Button, Input, Container, Segment, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import BookList from "./BookList";
 import * as BooksApi from "../BooksApi";
-import SearchForBook from "./SearchForBook";
+
 class BookSearch extends Component {
   constructor(props) {
     super(props);
     this.state = {
       searchResults: [],
-      loading: true
+      loading: false,
+      searchValue: ""
     };
   }
 
   componentDidMount() {
-    BooksApi.search("Linux").then(results => {
-      console.log(results);
+    if (this.state.searchParameter) {
+      this.setState({ loading: true });
+      this.searchBooks(this.state.searchParameter);
+    } else {
+    }
+  }
+
+  searchBooks = searchParameter => {
+    BooksApi.search(searchParameter).then(results => {
       this.setState({
-        searchResults: results,
+        searchResults: results.items || results || [],
         loading: false
       });
     });
-  }
+  };
+
+  onSearchInputChange = event => {
+    const newValue = event.target.value;
+    this.setState({ searchValue: newValue }, () => {
+      if (newValue.length > 1) {
+        this.searchBooks(this.state.searchValue);
+      }
+    });
+  };
 
   render() {
     return (
@@ -30,7 +47,14 @@ class BookSearch extends Component {
           <Header textAlign="left" as="h1">
             Book Search
           </Header>
-          <SearchForBook />
+          <form>
+            <Input
+              value={this.state.searchValue}
+              placeholder="Search for books"
+              onChange={this.onSearchInputChange}
+              action={{ content: "Search" }}
+            />
+          </form>
           <BookList bookShelf={this.state.searchResults} shelfName="" />
         </Segment>
         <Link to="/">

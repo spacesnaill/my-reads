@@ -10,8 +10,9 @@ class SearchForBook extends Component {
     };
   }
 
-  onSearchInputChange = content => {
-    this.setState({ input: content });
+  onSearchInputChange = event => {
+    this.setState({ input: event.target.value });
+    this.props.onSearchInputChange(this.state.input);
   };
 
   render() {
@@ -20,10 +21,8 @@ class SearchForBook extends Component {
         <Input
           value={this.state.input}
           placeholder="Search for books"
+          onChange={this.onSearchInputChange}
           action={{ content: "Search" }}
-          onChange={event => {
-            this.onSearchInputChange(event.target.content);
-          }}
         />
       </form>
     );

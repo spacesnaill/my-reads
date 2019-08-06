@@ -10,7 +10,14 @@ function BookList(props) {
       {props.bookShelf.map(book => {
         return (
           <Card key={book.id} className="book-card">
-            <Book title={book.title} image={book.imageLinks.smallThumbnail} />
+            <Book
+              title={book.title}
+              image={
+                book.imageLinks
+                  ? book.imageLinks.smallThumbnail
+                  : "http://via.placeholder.com/100/160"
+              }
+            />
             <Card.Content extra>
               <Dropdown text="Move Book to...">
                 <Dropdown.Menu>
