@@ -29,6 +29,7 @@ function BookList(props) {
                 bookShelves={bookShelfOptions}
                 shelfName={book.shelf}
                 book={book}
+                runAfterBookIsUpdated={props.runAfterBookIsUpdated}
               />
             </Card.Content>
           </Card>
@@ -41,7 +42,7 @@ function BookList(props) {
 BookList.propTypes = {
   bookShelf: PropTypes.array.isRequired,
   shelfName: PropTypes.string.isRequired,
-  moveBookToShelf: PropTypes.func
+  runAfterBookIsUpdated: PropTypes.func
 };
 
 export default BookList;

@@ -52,13 +52,7 @@ class BookShelves extends Component {
     });
   };
 
-  addBookToShelf = (bookShelfName, book) => {
-    BooksApi.update(book, bookShelfName).then(() => {
-      this.updateUIBookShelf(bookShelfName, book.id);
-    });
-  };
-
-  updateUIBookShelf = (bookShelfName, bookId) => {
+  addBookToShelf = (bookShelfName, bookId) => {
     BooksApi.get(bookId).then(book => {
       this.setState(currentState => {
         currentState[bookShelfName].push(book);
@@ -69,9 +63,9 @@ class BookShelves extends Component {
     });
   };
 
-  moveBookToShelf = (book, origin, destination) => {
-    this.addBookToShelf(destination, book);
-    this.deleteBookFromShelf(origin, book.id);
+  moveBookToShelf = parameters => {
+    this.addBookToShelf(parameters.destination, parameters.book.id);
+    this.deleteBookFromShelf(parameters.origin, parameters.book.id);
   };
 
   render() {
@@ -88,7 +82,7 @@ class BookShelves extends Component {
             </Header>
             <BookList
               bookShelf={this.state.wantToRead}
-              moveBookToShelf={this.moveBookToShelf}
+              runAfterBookIsUpdated={this.moveBookToShelf}
               shelfName="wantToRead"
             />
           </Segment>
@@ -103,7 +97,7 @@ class BookShelves extends Component {
             </Header>
             <BookList
               bookShelf={this.state.currentlyReading}
-              moveBookToShelf={this.moveBookToShelf}
+              runAfterBookIsUpdated={this.moveBookToShelf}
               shelfName="currentlyReading"
             />
           </Segment>
@@ -118,7 +112,7 @@ class BookShelves extends Component {
             </Header>
             <BookList
               bookShelf={this.state.read}
-              moveBookToShelf={this.moveBookToShelf}
+              runAfterBookIsUpdated={this.moveBookToShelf}
               shelfName="read"
             />
           </Segment>
