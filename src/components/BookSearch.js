@@ -27,7 +27,7 @@ class BookSearch extends Component {
         <h1>Book Search</h1>
         <BookList bookShelf={this.state.searchResults} shelfName="" />
         <Link to="/">
-          <Button>&#8592; Back to Bookshelves</Button>
+          <Button className="back-button">&#8592; Back to Bookshelves</Button>
         </Link>
       </div>
     );

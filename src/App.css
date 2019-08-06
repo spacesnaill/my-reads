@@ -12,7 +12,7 @@
 }
 
 .book-card {
-  flex: 1;
+  flex: 0 0 auto;
   padding: 10px;
 }
 
@@ -38,6 +38,12 @@ body {
 }
 
 .add-book-button {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.back-button {
   position: fixed;
   bottom: 10px;
   right: 10px;
