@@ -59,7 +59,7 @@ class BookSearch extends Component {
             placeholder="Search for books"
             onChange={this.onSearchInputChange}
             size="large"
-            icon="book"
+            icon="search"
           />
           <BookList
             bookShelf={this.state.searchResults}
