@@ -22,7 +22,7 @@ function Book(props) {
             icon="heart"
             disabled
           />
-          ({props.ratingsCount || 0})
+          ({props.ratingsCount})
         </Card.Description>
       </Card.Content>
     </div>
