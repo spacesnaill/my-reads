@@ -43,7 +43,7 @@ function MoveBook(props) {
 
 MoveBook.propTypes = {
   bookShelves: PropTypes.array.isRequired,
-  shelfName: PropTypes.string.isRequired,
+  shelfName: PropTypes.string,
   book: PropTypes.object.isRequired,
   runAfterBookIsUpdated: PropTypes.func
 };
