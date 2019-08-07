@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import BookList from "./BookList";
 import AddBook from "./AddBook";
-import { Segment, Container, Header, Menu } from "semantic-ui-react";
+import { Segment, Container, Header } from "semantic-ui-react";
 
 function BookShelves(props) {
   return (
