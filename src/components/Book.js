@@ -15,6 +15,7 @@ function Book(props) {
       <Card.Content>
         <Card.Header as="h3">{props.title}</Card.Header>
         <Card.Description>
+          <p>Authors: {props.authors.join(", ")}</p>
           Rating:{" "}
           <Rating
             defaultRating={props.averageRating}
@@ -33,7 +34,8 @@ Book.propTypes = {
   title: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   averageRating: PropTypes.number.isRequired,
-  ratingsCount: PropTypes.number.isRequired
+  ratingsCount: PropTypes.number.isRequired,
+  authors: PropTypes.array.isRequired
 };
 
 export default Book;

@@ -25,6 +25,7 @@ function BookList(props) {
               }
               averageRating={book.averageRating || 0}
               ratingsCount={book.ratingsCount || 0}
+              authors={book.authors || []}
             />
             <Card.Content extra>
               <MoveBook
