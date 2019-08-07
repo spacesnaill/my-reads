@@ -71,8 +71,7 @@ class BookSearch extends Component {
 BookSearch.propTypes = {
   currentlyReading: PropTypes.array.isRequired,
   wantToRead: PropTypes.array.isRequired,
-  read: PropTypes.array.isRequired,
-  moveBookToShelf: PropTypes.func
+  read: PropTypes.array.isRequired
 };
 
 export default BookSearch;
