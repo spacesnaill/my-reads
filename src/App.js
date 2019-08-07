@@ -67,8 +67,12 @@ class App extends Component {
   };
 
   moveBookToShelf = parameters => {
-    this.addBookToShelf(parameters.destination, parameters.book.id);
-    this.deleteBookFromShelf(parameters.origin, parameters.book.id);
+    if (parameters.origin !== "none") {
+      this.deleteBookFromShelf(parameters.origin, parameters.book.id);
+    }
+    if (parameters.destination !== "none") {
+      this.addBookToShelf(parameters.destination, parameters.book.id);
+    }
   };
 
   render() {
@@ -94,6 +98,7 @@ class App extends Component {
               currentlyReading={this.state.currentlyReading}
               wantToRead={this.state.wantToRead}
               read={this.state.read}
+              moveBookToShelf={this.moveBookToShelf}
             />
           )}
         />

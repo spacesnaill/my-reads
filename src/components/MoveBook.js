@@ -1,44 +1,61 @@
-import React from "react";
+import React, { Component } from "react";
 import { Dropdown } from "semantic-ui-react";
-import { update } from "../BooksApi";
+import { update, get } from "../BooksApi";
 import PropTypes from "prop-types";
 
-function MoveBook(props) {
-  function moveBookToShelf(book, destinationShelfName, runAfterUpdate) {
+class MoveBook extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      shelfBookBelongsTo: ""
+    };
+  }
+
+  moveBookToShelf = (book, destinationShelfName, runAfterUpdate) => {
     update(book, destinationShelfName).then(result => {
       if (runAfterUpdate) {
         runAfterUpdate({
-          book: props.book,
-          origin: props.shelfName,
+          book: this.props.book,
+          origin: this.state.shelfBookBelongsTo,
           destination: destinationShelfName
         });
       }
+      this.setState({ shelfBookBelongsTo: destinationShelfName });
+    });
+  };
+
+  componentDidMount() {
+    get(this.props.book.id).then(response => {
+      this.setState({ shelfBookBelongsTo: response.shelf || "" });
     });
   }
 
-  return (
-    <Dropdown text="Move Book to. . .">
-      <Dropdown.Menu>
-        {props.bookShelves.map(bookShelf => {
-          return (
-            <Dropdown.Item
-              key={bookShelf.name}
-              disabled={props.shelfName === bookShelf.name}
-              onClick={event => {
-                moveBookToShelf(
-                  props.book,
-                  bookShelf.name,
-                  props.runAfterBookIsUpdated
-                );
-              }}
-            >
-              {bookShelf.title}
-            </Dropdown.Item>
-          );
-        })}
-      </Dropdown.Menu>
-    </Dropdown>
-  );
+  render() {
+    return (
+      <Dropdown text="Move Book to. . .">
+        <Dropdown.Menu>
+          {this.props.bookShelves.map(bookShelf => {
+            return (
+              <Dropdown.Item
+                key={bookShelf.name}
+                disabled={bookShelf.name === this.state.shelfBookBelongsTo}
+                onClick={event => {
+                  this.moveBookToShelf(
+                    this.props.book,
+                    bookShelf.name,
+                    this.props.runAfterBookIsUpdated
+                  );
+                }}
+              >
+                {bookShelf.title}
+              </Dropdown.Item>
+            );
+          })}
+        </Dropdown.Menu>
+      </Dropdown>
+    );
+  }
 }
 
 MoveBook.propTypes = {

@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 class BookSearch extends Component {
   constructor(props) {
     super(props);
+    // TODO clean up loading state, it is not being used
     this.state = {
       searchResults: [],
       loading: false,
@@ -23,8 +24,8 @@ class BookSearch extends Component {
     }
   }
 
-  searchBooks = searchParameter => {
-    BooksApi.search(searchParameter).then(results => {
+  searchBooks = () => {
+    BooksApi.search(this.state.searchValue).then(results => {
       this.setState({
         searchResults: results.items || results || [],
         loading: false
@@ -36,7 +37,7 @@ class BookSearch extends Component {
     const newValue = event.target.value;
     this.setState({ searchValue: newValue }, () => {
       if (newValue.length > 1) {
-        this.searchBooks(this.state.searchValue);
+        this.searchBooks();
       } else {
         this.setState({ searchResults: [] });
       }
@@ -58,7 +59,11 @@ class BookSearch extends Component {
             size="large"
             icon="search"
           />
-          <BookList bookShelf={this.state.searchResults} shelfName="" />
+          <BookList
+            bookShelf={this.state.searchResults}
+            shelfName=""
+            runAfterBookIsUpdated={this.props.moveBookToShelf}
+          />
         </Segment>
         <Link to="/">
           <Button className="back-button">&#8592; Back to Bookshelves</Button>
