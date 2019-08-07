@@ -1,68 +1,21 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# My Reads App
 
-## Available Scripts
+## Installation
 
-In the project directory, you can run:
+Run `yarn` and `yarn start` within the main project directory (the same directory as the yarn.lock file)
 
-### `npm start`
+After running `yarn start` a web page should be open with the app in your OS's default browser. If this is not the case, try to open `localhost:3000` inside your favorite browser.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Usage
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Using the app is very simple. The default page is your bookshelves page. Here you will find 3 bookshelves: Want to Read, Currently Reading, and Read.
 
-### `npm test`
+You may wish to begin by adding books. In the lower right hand corner you should see the "+ Add Book" button. Click on this button to be brought to a search page where you can try to find the book you wish to add. Type in whatever parameters you wish into the search box, and if a book matches those parameters, it will return some results. For example, typing in "React" gives numerous results.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Simply click on the "Move Book To. . ." button beneath the books to move them to whichever bookshelf you desire. For example, if you click on the button beneath the "React.js Essentials" book and move it to the "Want To Read" bookshelf, you will see it when you return to the bookshelves page.
 
-### `npm run build`
+To return to the bookshelves page, click the "<- Back to Bookshelves" button in the lower right hand corner of the screen, in a similar location that the "+ Add Book" button was.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You can move books around freely between the shelves and they should remain in those shelves if you leave the page and come back, or if you stop the program and restart it.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The ratings that you find beneath each book are the averages of all the ratings. You can see how many people rated each book by looking at the number in parantheses to the right of the average rating. At this time you cannot submit your own ratings.
