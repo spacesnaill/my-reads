@@ -31,7 +31,6 @@ function BookList(props) {
             <Card.Content extra>
               <MoveBook
                 bookShelves={bookShelfOptions}
-                shelfName={book.shelf}
                 book={book}
                 runAfterBookIsUpdated={props.runAfterBookIsUpdated}
               />
