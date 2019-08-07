@@ -49,7 +49,7 @@ class BookSearch extends Component {
       <Container width="66%" textAlign="center">
         <Segment textAlign="center" loading={this.state.loading}>
           <Header textAlign="left" as="h1">
-            Book Search
+            Search
           </Header>
           <Input
             className="book-search-input"
