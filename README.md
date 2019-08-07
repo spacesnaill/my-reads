@@ -19,3 +19,7 @@ To return to the bookshelves page, click the "<- Back to Bookshelves" button in 
 You can move books around freely between the shelves and they should remain in those shelves if you leave the page and come back, or if you stop the program and restart it.
 
 The ratings that you find beneath each book are the averages of all the ratings. You can see how many people rated each book by looking at the number in parantheses to the right of the average rating. At this time you cannot submit your own ratings.
+
+## Heroku Link
+
+This project is currently deployed to Heroku at: [https://pjg-my-reads.herokuapp.com/](https://pjg-my-reads.herokuapp.com/)
