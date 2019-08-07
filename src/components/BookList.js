@@ -8,7 +8,8 @@ function BookList(props) {
   const bookShelfOptions = [
     { name: "wantToRead", title: "Want To Read" },
     { name: "currentlyReading", title: "Currently Reading" },
-    { name: "read", title: "Read" }
+    { name: "read", title: "Read" },
+    { name: "none", title: "None" }
   ];
 
   return (
