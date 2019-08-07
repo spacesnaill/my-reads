@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function AddBook(props) {
   return (
-    <Link to="/BookSearch">
+    <Link to="/Search">
       <Button className="add-book-button">&#43; Add Book</Button>
     </Link>
   );
