@@ -2,6 +2,7 @@ import React from "react";
 import BookList from "./BookList";
 import AddBook from "./AddBook";
 import { Segment, Container, Header } from "semantic-ui-react";
+import PropTypes from "prop-types";
 
 function BookShelves(props) {
   return (
@@ -56,5 +57,12 @@ function BookShelves(props) {
     </Container>
   );
 }
+
+BookShelves.propTypes = {
+  currentlyReading: PropTypes.array.isRequired,
+  wantToRead: PropTypes.array.isRequired,
+  read: PropTypes.array.isRequired,
+  moveBookToShelf: PropTypes.func
+};
 
 export default BookShelves;

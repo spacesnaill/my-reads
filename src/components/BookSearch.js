@@ -3,6 +3,7 @@ import { Button, Input, Container, Segment, Header } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import BookList from "./BookList";
 import * as BooksApi from "../BooksApi";
+import PropTypes from "prop-types";
 
 class BookSearch extends Component {
   constructor(props) {
@@ -66,5 +67,12 @@ class BookSearch extends Component {
     );
   }
 }
+
+BookSearch.propTypes = {
+  currentlyReading: PropTypes.array.isRequired,
+  wantToRead: PropTypes.array.isRequired,
+  read: PropTypes.array.isRequired,
+  moveBookToShelf: PropTypes.func
+};
 
 export default BookSearch;
