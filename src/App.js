@@ -5,8 +5,6 @@ import BookSearch from "./components/BookSearch";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as BooksApi from "./BooksApi";
 
-// TODO Pick up the state for the bookshelves and put it in this component so it can be shared between both the bookshelves page and the search page
-
 class App extends Component {
   constructor(props) {
     super(props);
