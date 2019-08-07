@@ -19,7 +19,6 @@ function BookShelves(props) {
           <BookList
             bookShelf={props.wantToRead}
             runAfterBookIsUpdated={props.moveBookToShelf}
-            shelfName="wantToRead"
           />
         </Segment>
 
@@ -34,7 +33,6 @@ function BookShelves(props) {
           <BookList
             bookShelf={props.currentlyReading}
             runAfterBookIsUpdated={props.moveBookToShelf}
-            shelfName="currentlyReading"
           />
         </Segment>
 
@@ -49,7 +47,6 @@ function BookShelves(props) {
           <BookList
             bookShelf={props.read}
             runAfterBookIsUpdated={props.moveBookToShelf}
-            shelfName="read"
           />
         </Segment>
         <AddBook />

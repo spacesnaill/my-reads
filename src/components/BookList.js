@@ -45,7 +45,6 @@ function BookList(props) {
 
 BookList.propTypes = {
   bookShelf: PropTypes.array.isRequired,
-  shelfName: PropTypes.string.isRequired,
   runAfterBookIsUpdated: PropTypes.func
 };
 

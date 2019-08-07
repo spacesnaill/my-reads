@@ -61,7 +61,6 @@ class BookSearch extends Component {
           />
           <BookList
             bookShelf={this.state.searchResults}
-            shelfName=""
             runAfterBookIsUpdated={this.props.moveBookToShelf}
           />
         </Segment>
