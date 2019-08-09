@@ -12,6 +12,10 @@ function BookList(props) {
     { name: "none", title: "None" }
   ];
 
+  function httpToHttps(link) {
+    return link.replace("http", "https");
+  }
+
   return (
     <Card.Group className="bookList">
       {props.bookShelf.map(book => {
@@ -21,8 +25,8 @@ function BookList(props) {
               title={book.title}
               image={
                 book.imageLinks
-                  ? book.imageLinks.smallThumbnail
-                  : "http://via.placeholder.com/100/160"
+                  ? httpToHttps(book.imageLinks.smallThumbnail)
+                  : "https://via.placeholder.com/100/160"
               }
               averageRating={book.averageRating || 0}
               ratingsCount={book.ratingsCount || 0}
