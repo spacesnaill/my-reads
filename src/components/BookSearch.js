@@ -11,21 +11,12 @@ class BookSearch extends Component {
     // TODO clean up loading state, it is not being used
     this.state = {
       searchResults: [],
-      loading: false,
-      searchValue: ""
+      loading: false
     };
   }
 
-  componentDidMount() {
-    if (this.state.searchParameter) {
-      this.setState({ loading: true });
-      this.searchBooks(this.state.searchParameter);
-    } else {
-    }
-  }
-
-  searchBooks = () => {
-    BooksApi.search(this.state.searchValue).then(results => {
+  searchBooks = searchValue => {
+    BooksApi.search(searchValue).then(results => {
       this.setState({
         searchResults: results.items || results || [],
         loading: false
@@ -37,7 +28,7 @@ class BookSearch extends Component {
     const newValue = event.target.value;
     this.setState({ searchValue: newValue }, () => {
       if (newValue.length > 1) {
-        this.searchBooks();
+        this.searchBooks(newValue);
       } else {
         this.setState({ searchResults: [] });
       }
@@ -53,7 +44,6 @@ class BookSearch extends Component {
           </Header>
           <Input
             className="book-search-input"
-            value={this.state.searchValue}
             placeholder="Search for books"
             onChange={this.onSearchInputChange}
             size="large"
