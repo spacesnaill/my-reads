@@ -26,15 +26,19 @@ class BookSearch extends Component {
   };
 
   onSearchInputChange = event => {
-    const newValue = event.target.value;
-    this.setState({ searchValue: newValue }, () => {
-      if (newValue.length > 1) {
-        this.searchBooks(newValue);
+    event.persist();
+    this.debounceSearchInput(event.target.value);
+  };
+
+  debounceSearchInput = Debounce(newSearchValue => {
+    this.setState({ searchValue: newSearchValue }, () => {
+      if (newSearchValue.length > 1) {
+        this.searchBooks(newSearchValue);
       } else {
         this.setState({ searchResults: [] });
       }
     });
-  };
+  }, 250);
 
   render() {
     return (
