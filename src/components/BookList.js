@@ -36,6 +36,9 @@ function BookList(props) {
               <MoveBook
                 bookShelves={bookShelfOptions}
                 book={book}
+                shelfBookBelongsTo={
+                  book.shelf || props.whichShelfContainsBookId(book.id)
+                }
                 runAfterBookIsUpdated={props.runAfterBookIsUpdated}
               />
             </Card.Content>
@@ -48,7 +51,8 @@ function BookList(props) {
 
 BookList.propTypes = {
   bookShelf: PropTypes.array.isRequired,
-  runAfterBookIsUpdated: PropTypes.func
+  runAfterBookIsUpdated: PropTypes.func,
+  whichShelfContainsBookId: PropTypes.func
 };
 
 export default BookList;
