@@ -7,37 +7,28 @@ class MoveBook extends Component {
   constructor(props) {
     super(props);
 
-    this._isMounted = false;
-
     this.state = {
       shelfBookBelongsTo: ""
     };
   }
 
   moveBookToShelf = (book, destinationShelfName, runAfterUpdate) => {
-    this._isMounted &&
-      update(book, destinationShelfName).then(result => {
-        if (runAfterUpdate) {
-          runAfterUpdate({
-            book: this.props.book,
-            origin: this.state.shelfBookBelongsTo,
-            destination: destinationShelfName
-          });
-        }
-        this.setState({ shelfBookBelongsTo: destinationShelfName });
-      });
+    update(book, destinationShelfName).then(result => {
+      if (runAfterUpdate) {
+        runAfterUpdate({
+          book: this.props.book,
+          origin: this.state.shelfBookBelongsTo,
+          destination: destinationShelfName
+        });
+      }
+      this.setState({ shelfBookBelongsTo: destinationShelfName });
+    });
   };
 
   componentDidMount() {
-    this._isMounted = true;
-    this._isMounted &&
-      get(this.props.book.id).then(response => {
-        this.setState({ shelfBookBelongsTo: response.shelf || "" });
-      });
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false;
+    get(this.props.book.id).then(response => {
+      this.setState({ shelfBookBelongsTo: response.shelf || "" });
+    });
   }
 
   render() {
