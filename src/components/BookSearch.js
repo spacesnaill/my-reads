@@ -9,20 +9,41 @@ import Debounce from "lodash.debounce";
 class BookSearch extends Component {
   constructor(props) {
     super(props);
-    // TODO clean up loading state, it is not being used
     this.state = {
-      searchResults: [],
-      loading: false
+      searchResults: []
     };
   }
 
   searchBooks = searchValue => {
     BooksApi.search(searchValue).then(results => {
       this.setState({
-        searchResults: results.items || results || [],
-        loading: false
+        searchResults: results.items || results || []
       });
     });
+  };
+
+  searchShelfForBookId = (bookShelfName, bookId) => {
+    if (
+      this.props[bookShelfName].find(book => {
+        return book.id === bookId;
+      })
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  whichShelfContainsBookId = bookId => {
+    if (this.searchShelfForBookId("wantToRead", bookId)) {
+      return "wantToRead";
+    } else if (this.searchShelfForBookId("currentlyReading", bookId)) {
+      return "currentlyReading";
+    } else if (this.searchShelfForBookId("read", bookId)) {
+      return "read";
+    } else {
+      return "none";
+    }
   };
 
   onSearchInputChange = event => {
@@ -43,7 +64,7 @@ class BookSearch extends Component {
   render() {
     return (
       <Container width="66%" textAlign="center">
-        <Segment textAlign="center" loading={this.state.loading}>
+        <Segment textAlign="center">
           <Header textAlign="left" as="h1">
             Search
           </Header>
@@ -57,6 +78,7 @@ class BookSearch extends Component {
           <BookList
             bookShelf={this.state.searchResults}
             runAfterBookIsUpdated={this.props.moveBookToShelf}
+            whichShelfContainsBookId={this.whichShelfContainsBookId}
           />
         </Segment>
         <Link to="/">
