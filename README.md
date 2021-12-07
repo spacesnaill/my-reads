@@ -22,4 +22,4 @@ The ratings that you find beneath each book are the averages of all the ratings.
 
 ## Netlify Link
 
-This project is currently deployed to Heroku at: [https://pjg-my-reads.netlify.app/](https://pjg-my-reads.netlify.app/)
+This project is currently deployed to Netlify at: [https://pjg-my-reads.netlify.app/](https://pjg-my-reads.netlify.app/)
